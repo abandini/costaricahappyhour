@@ -88,5 +88,20 @@
     </footer>
 
     <script src="js/scripts.js"></script>
+    <script>
+        // Check if user came from form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const formSubmitted = localStorage.getItem('formSubmitted');
+            
+            if (formSubmitted) {
+                // Clear the flag once on thank you page
+                localStorage.removeItem('formSubmitted');
+            } else {
+                // Optional: If you want to redirect users who directly access this page
+                // Uncomment the line below
+                // window.location.href = 'index.html';
+            }
+        });
+    </script>
 </body>
 </html>

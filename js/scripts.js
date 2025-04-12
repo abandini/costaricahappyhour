@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             // Form is using the Getform.io service which handles the submission
-            // This code adds client-side validation and redirect
+            // This code adds client-side validation and explicit redirect
             
             const nameField = document.getElementById('name');
             const emailField = document.getElementById('email');
@@ -48,12 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             }
             
-            // If using AJAX submission instead of form action, uncomment this
-            // and comment out the redirect line
-            /*
+            // Use AJAX submission to ensure we can control the redirect
             e.preventDefault();
             
             const formData = new FormData(contactForm);
+            
+            // Show loading indicator
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
             
             fetch('https://getform.io/f/bolmoqya', {
                 method: 'POST',
@@ -64,20 +68,21 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
+                    // Set flag and explicitly redirect to thank-you page
+                    localStorage.setItem('formSubmitted', 'true');
                     window.location.href = 'thank-you.html';
                 } else {
+                    submitButton.textContent = originalButtonText;
+                    submitButton.disabled = false;
                     alert('There was a problem submitting the form. Please try again.');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
                 alert('There was a problem submitting the form. Please try again.');
             });
-            */
-            
-            // This will work with the standard form submission to Getform.io
-            // Getform will need to be configured to redirect to thank-you.html
-            localStorage.setItem('formSubmitted', 'true');
         });
     }
     

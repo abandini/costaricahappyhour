@@ -200,12 +200,42 @@ nav ul li a.cta-button:hover {
 
 /* ===== HERO SECTION ===== */
 .hero {
-    background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.8)), url('../images/costa-rica-beach.jpg');
-    background-size: cover;
-    background-position: center;
+    position: relative;
     color: var(--light);
     text-align: center;
     padding: var(--spacing-xl) 0;
+    overflow: hidden;
+}
+
+.hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.8));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
 .hero h2 {
@@ -425,40 +455,23 @@ nav ul li a.cta-button:hover {
     direction: ltr;
 }
 
-.location-image {
+.location-image-container {
     height: 300px;
     border-radius: var(--radius-md);
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
     box-shadow: var(--shadow-md);
 }
 
-.location-image.san-jose {
-    background-image: url('../images/san-jose.jpg');
+.location-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
 }
 
-.location-image.jaco {
-    background-image: url('../images/jaco.jpg');
-}
-
-.location-image.santa-teresa {
-    background-image: url('../images/santa-teresa.jpg');
-}
-
-.location-image.manuel-antonio {
-    background-image: url('../images/manuel-antonio.jpg');
-}
-
-.location-image.santa-ana {
-    background-image: url('../images/santa-ana.jpg');
-}
-
-.location-image.monkey-bar {
-    background-image: url('../images/monkey-bar.jpg');
-}
-
-.location-image.manzanillo {
-    background-image: url('../images/manzanillo.jpg');
+.location-img:hover {
+    transform: scale(1.05);
 }
 
 .domain-potential {

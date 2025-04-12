@@ -627,33 +627,43 @@ nav ul li a.cta-button:hover {
 .thank-you-content {
     background-color: white;
     text-align: center;
+    padding: var(--spacing-xl) 0;
 }
 
 .thank-you-message {
     max-width: 700px;
-    margin: 0 auto var(--spacing-lg);
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.thank-you-message h2 {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--dark);
+}
+
+.thank-you-message p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    color: var(--text);
 }
 
 .thank-you-icon {
-    font-size: 4rem;
+    font-size: 3rem;
     color: var(--success);
     margin-bottom: var(--spacing-md);
+    display: none; /* Hide the checkmark icon as it's not in the image */
 }
 
 .thank-you-buttons {
-    margin-top: var(--spacing-md);
+    margin-top: var(--spacing-lg);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: var(--spacing-md);
-}
-
-.next-steps {
-    background-color: var(--light);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: left;
 }
 
 /* ===== CTA SECTION ===== */
@@ -803,6 +813,7 @@ footer {
     .thank-you-buttons {
         flex-direction: column;
         gap: var(--spacing-sm);
+        align-items: center;
     }
 }
 
